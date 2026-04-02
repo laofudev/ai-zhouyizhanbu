@@ -681,52 +681,18 @@ function App() {
 
       {/* 页脚 */}
       <footer className="app-footer">
-        <div className="footer-content">
-          <div className="footer-section">
-            <h4>开源项目</h4>
-            <a
-              href="https://github.com/laofudev/ai-zhouyizhanbu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-link"
-            >
-              <Github className="footer-icon" />
-              GitHub 仓库
-            </a>
-            <p className="footer-note">
-              基于 <strong>MIT</strong> 协议开源 · 欢迎 Star ⭐
-            </p>
-          </div>
-
-          <div className="footer-section">
-            <h4>项目特色</h4>
-            <div className="footer-features">
-              <p>🎯 传统六爻占卜法</p>
-              <p>🤖 AI 智能解卦</p>
-              <p>📖 64卦完整数据</p>
-              <p>🎨 现代化界面设计</p>
-            </div>
-          </div>
-
-          <div className="footer-section">
-            <h4>技术栈</h4>
-            <div className="footer-tech">
-              <p>React 19 + TypeScript</p>
-              <p>Vite + Tailwind CSS</p>
-              <p>shadcn/ui + Framer Motion</p>
-              <p>DeepSeek AI</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <p className="copyright">
-            📖 易经占卜 · 传承千年智慧 · <a href="https://github.com/laofudev/ai-zhouyizhanbu" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </p>
-          <p className="license">
-            本项目开源，仅供学习研究使用 · 占卜结果请理性看待
-          </p>
-        </div>
+        <a
+          href="https://github.com/laofudev/ai-zhouyizhanbu"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer-github-link"
+        >
+          <Github className="github-icon" />
+          <span>Star on GitHub</span>
+        </a>
+        <p className="footer-text">
+          易经占卜 · 传承千年智慧
+        </p>
       </footer>
 
       {/* 使用指南弹窗 */}
