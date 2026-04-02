@@ -11,9 +11,7 @@ import {
   Check,
   Github,
   Info,
-  X,
-  Heart,
-  Mail
+  X
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -695,35 +693,39 @@ function App() {
               <Github className="footer-icon" />
               GitHub 仓库
             </a>
-            <p className="footer-note">使用 React + TypeScript + AI 构建</p>
+            <p className="footer-note">
+              基于 <strong>MIT</strong> 协议开源 · 欢迎 Star ⭐
+            </p>
           </div>
 
           <div className="footer-section">
-            <h4>联系作者</h4>
-            <a href="mailto:laofudev@foxmail.com" className="footer-link">
-              <Mail className="footer-icon" />
-              laofudev@foxmail.com
-            </a>
-            <div className="footer-brand">
-              <p>只工作不上班 | 95后一人公司</p>
-              <p>写代码做产品，以定投滚雪球</p>
+            <h4>项目特色</h4>
+            <div className="footer-features">
+              <p>🎯 传统六爻占卜法</p>
+              <p>🤖 AI 智能解卦</p>
+              <p>📖 64卦完整数据</p>
+              <p>🎨 现代化界面设计</p>
             </div>
           </div>
 
           <div className="footer-section">
-            <h4>关注公众号</h4>
-            <div className="footer-qrcode">
-              <img src="/gzh.jpg" alt="公众号二维码" />
-              <p>资源老夫</p>
+            <h4>技术栈</h4>
+            <div className="footer-tech">
+              <p>React 19 + TypeScript</p>
+              <p>Vite + Tailwind CSS</p>
+              <p>shadcn/ui + Framer Motion</p>
+              <p>DeepSeek AI</p>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>
-            Made with <Heart className="heart-icon" /> by 资源老夫
+          <p className="copyright">
+            📖 易经占卜 · 传承千年智慧 · <a href="https://github.com/laofudev/ai-zhouyizhanbu" target="_blank" rel="noopener noreferrer">GitHub</a>
           </p>
-          <p className="copyright">© 2025 易经占卜 · 传承千年智慧</p>
+          <p className="license">
+            本项目开源，仅供学习研究使用 · 占卜结果请理性看待
+          </p>
         </div>
       </footer>
 
