@@ -1,22 +1,38 @@
 /* 易经占卜 - 样式 */
 
-/* ========== 基础变量 ========== */
+/* ========== 基础变量 - 中国传统色彩 ========== */
 :root {
-  --primary-color: #8B4513;
-  --primary-light: #D2691E;
-  --primary-dark: #5D3A1A;
-  --secondary-color: #DAA520;
-  --bg-color: #FDF5E6;
-  --card-bg: #FFFAF0;
-  --text-primary: #3D2914;
-  --text-secondary: #6B4423;
-  --border-color: #D4A574;
-  --shadow-color: rgba(139, 69, 19, 0.15);
-  --yang-color: #8B4513;
-  --yin-color: #D4A574;
-  --changing-color: #DC143C;
+  /* 主色 - 朱红、墨色、金色 */
+  --primary-color: #C0392B;
+  --primary-light: #E74C3C;
+  --primary-dark: #922B21;
+  --secondary-color: #D4AF37;
+
+  /* 背景色 - 宣纸、墨色 */
+  --bg-color: #F5F5DC;
+  --bg-pattern: #EDE5D3;
+  --card-bg: #FFFEF9;
+  --text-primary: #2C3E50;
+  --text-secondary: #5D6D7E;
+  --border-color: #D4AF37;
+  --shadow-color: rgba(192, 57, 43, 0.15);
+
+  /* 卦象颜色 */
+  --yang-color: #2C3E50;
+  --yin-color: #95A5A6;
+  --changing-color: #C0392B;
+
+  /* 硬币颜色 */
   --coin-gold: #FFD700;
   --coin-silver: #C0C0C0;
+
+  /* 传统色彩 */
+  --vermilion: #C0392B;
+  --ink-black: #2C3E50;
+  --gold: #D4AF37;
+  --indigo: #34495E;
+  --jade: #27AE60;
+  --purple: #8E44AD;
 }
 
 /* ========== 全局样式 ========== */
@@ -27,10 +43,26 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Noto Serif SC', 'STSong', 'SimSun', serif;
-  background-color: var(--bg-color);
+  font-family: 'Noto Serif SC', 'STSong', 'SimSun', 'KaiTi', serif;
+  background: var(--bg-color);
   color: var(--text-primary);
   min-height: 100vh;
+  /* 宣纸纹理 */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.01) 2px,
+      rgba(0, 0, 0, 0.01) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.01) 2px,
+      rgba(0, 0, 0, 0.01) 4px
+    );
 }
 
 /* ========== 应用容器 ========== */
@@ -42,7 +74,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ========== 背景装饰 ========== */
+/* ========== 背景装饰 - 传统元素 ========== */
 .bg-decoration {
   position: fixed;
   top: 0;
@@ -54,76 +86,161 @@ body {
   overflow: hidden;
 }
 
+/* 太极八卦背景 */
 .bg-circle {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.08;
-  background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+  opacity: 0.03;
+  background: radial-gradient(circle, var(--ink-black) 0%, transparent 70%);
+  border: 2px solid var(--gold);
 }
 
 .circle-1 {
-  width: 600px;
-  height: 600px;
-  top: -200px;
+  width: 800px;
+  height: 800px;
+  top: -300px;
   right: -200px;
+  background: radial-gradient(circle, var(--vermilion) 0%, transparent 70%);
 }
 
 .circle-2 {
-  width: 400px;
-  height: 400px;
-  bottom: 10%;
-  left: -150px;
+  width: 500px;
+  height: 500px;
+  bottom: 15%;
+  left: -200px;
+  background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
 }
 
 .circle-3 {
-  width: 300px;
-  height: 300px;
-  top: 40%;
-  right: 5%;
+  width: 350px;
+  height: 350px;
+  top: 35%;
+  right: 8%;
+  background: radial-gradient(circle, var(--ink-black) 0%, transparent 70%);
 }
 
-/* ========== 头部 ========== */
+/* 添加云纹装饰 */
+.bg-decoration::before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 200px;
+  height: 200px;
+  opacity: 0.05;
+  background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.bg-decoration::after {
+  content: '';
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+  width: 150px;
+  height: 150px;
+  opacity: 0.05;
+  background: radial-gradient(circle, var(--vermilion) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* ========== 头部 - 传统印章风格 ========== */
 .app-header {
   position: relative;
   z-index: 1;
-  padding: 2rem 1rem;
+  padding: 3rem 1rem 2rem;
   text-align: center;
-  background: linear-gradient(180deg, rgba(253, 245, 230, 0.95) 0%, rgba(253, 245, 230, 0) 100%);
+  background: linear-gradient(180deg,
+    rgba(245, 245, 220, 0.95) 0%,
+    rgba(245, 245, 220, 0) 100%
+  );
+  border-bottom: 2px solid var(--gold);
+}
+
+.app-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--vermilion) 20%,
+    var(--gold) 50%,
+    var(--vermilion) 80%,
+    transparent 100%
+  );
 }
 
 .header-content {
   max-width: 600px;
   margin: 0 auto;
+  position: relative;
 }
 
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.logo::before {
+  content: '☯';
+  position: absolute;
+  left: -3rem;
+  font-size: 2.5rem;
+  opacity: 0.1;
+  color: var(--ink-black);
+}
+
+.logo::after {
+  content: '☯';
+  position: absolute;
+  right: -3rem;
+  font-size: 2.5rem;
+  opacity: 0.1;
+  color: var(--ink-black);
 }
 
 .logo-icon {
-  width: 2rem;
-  height: 2rem;
-  color: var(--primary-color);
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--vermilion);
+  filter: drop-shadow(0 2px 4px rgba(192, 57, 43, 0.3));
 }
 
 .logo-text {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--ink-black);
   margin: 0;
-  letter-spacing: 0.2em;
-  text-shadow: 2px 2px 4px var(--shadow-color);
+  letter-spacing: 0.3em;
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(212, 175, 55, 0.2);
+  font-family: 'KaiTi', 'STKaiti', serif;
 }
 
 .header-subtitle {
   font-size: 1rem;
   color: var(--text-secondary);
   margin: 0;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.5em;
+  position: relative;
+  display: inline-block;
+}
+
+.header-subtitle::before,
+.header-subtitle::after {
+  content: '◆';
+  color: var(--gold);
+  margin: 0 0.5rem;
+  opacity: 0.5;
 }
 
 /* ========== 主内容 ========== */
@@ -141,16 +258,49 @@ body {
   width: 100%;
 }
 
-/* ========== 卡片样式 ========== */
+/* ========== 卡片样式 - 古籍卷轴风 ========== */
 .input-card,
 .tossing-card,
 .result-card,
 .analysis-card {
   background: var(--card-bg);
-  border: 2px solid var(--border-color);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px var(--shadow-color);
+  border: 3px solid var(--gold);
+  border-radius: 12px;
+  box-shadow:
+    0 8px 32px var(--shadow-color),
+    inset 0 0 60px rgba(212, 175, 55, 0.05);
   overflow: hidden;
+  position: relative;
+}
+
+/* 卡片四角装饰 */
+.input-card::before,
+.tossing-card::before,
+.result-card::before,
+.analysis-card::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.input-card::after,
+.tossing-card::after,
+.result-card::after,
+.analysis-card::after {
+  content: '◈';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  opacity: 0.5;
 }
 
 .card-title {
@@ -158,12 +308,17 @@ body {
   align-items: center;
   gap: 0.5rem;
   font-size: 1.25rem;
-  color: var(--primary-color);
+  color: var(--ink-black);
+  font-family: 'KaiTi', 'STKaiti', serif;
+  font-weight: 600;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 0.75rem;
 }
 
 .card-icon {
   width: 1.5rem;
   height: 1.5rem;
+  color: var(--vermilion);
 }
 
 /* ========== 输入区域 ========== */
@@ -197,10 +352,13 @@ body {
   width: 100%;
   margin-top: 1.5rem;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg,
+    var(--vermilion) 0%,
+    var(--primary-dark) 100%
+  );
   color: white;
-  border: none;
-  border-radius: 12px;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
@@ -209,7 +367,44 @@ body {
   justify-content: center;
   gap: 0.5rem;
   transition: all 0.3s;
-  box-shadow: 0 4px 12px var(--shadow-color);
+  box-shadow:
+    0 4px 12px var(--shadow-color),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.start-btn::before,
+.confirm-btn::before,
+.analysis-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.start-btn:hover::before,
+.confirm-btn:hover::before,
+.analysis-btn:hover::before {
+  left: 100%;
+}
+
+.start-btn:hover:not(:disabled),
+.confirm-btn:hover:not(:disabled),
+.analysis-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 20px var(--shadow-color),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: var(--gold);
 }
 
 .start-btn:hover:not(:disabled),
@@ -240,25 +435,57 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* ========== 说明区域 ========== */
+/* ========== 说明区域 - 竹简风格 ========== */
 .intro-section {
   margin-top: 2rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
-  border: 1px dashed var(--border-color);
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(212, 175, 55, 0.1) 100%
+  );
+  border-radius: 8px;
+  border: 2px solid var(--gold);
+  position: relative;
+}
+
+.intro-section::before {
+  content: '☯';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.5rem;
+  opacity: 0.1;
+  color: var(--ink-black);
 }
 
 .intro-section.why-manual {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(218, 165, 32, 0.1) 100%);
-  border: 2px solid var(--secondary-color);
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(192, 57, 43, 0.05) 100%
+  );
+  border: 2px solid var(--vermilion);
 }
 
 .intro-title {
   text-align: center;
-  font-size: 1.1rem;
-  color: var(--primary-color);
+  font-size: 1.2rem;
+  color: var(--ink-black);
   margin-bottom: 1rem;
+  font-family: 'KaiTi', 'STKaiti', serif;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.intro-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
 }
 
 /* ========== 为什么手动抛硬币 ========== */
@@ -511,39 +738,65 @@ body {
   background: rgba(139, 69, 19, 0.05);
 }
 
-/* ========== 页脚 ========== */
+/* ========== 页脚 - 传统印章风格 ========== */
 .app-footer {
   position: relative;
   z-index: 1;
-  padding: 2rem 1rem;
-  background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(218, 165, 32, 0.05) 100%);
-  border-top: 1px solid rgba(139, 69, 19, 0.1);
-  margin-top: 3rem;
+  padding: 2.5rem 1rem;
+  background: linear-gradient(135deg,
+    rgba(44, 62, 80, 0.05) 0%,
+    rgba(212, 175, 55, 0.08) 100%
+  );
+  border-top: 3px solid var(--gold);
+  margin-top: 4rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
+}
+
+.app-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--gold) 50%,
+    transparent 100%
+  );
 }
 
 .footer-github-link {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--primary-color);
+  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg,
+    var(--vermilion) 0%,
+    var(--primary-dark) 100%
+  );
   color: white;
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
   transition: all 0.3s;
-  box-shadow: 0 4px 12px var(--shadow-color);
+  box-shadow:
+    0 4px 16px rgba(192, 57, 43, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 2px solid var(--gold);
+  font-family: 'KaiTi', 'STKaiti', serif;
 }
 
 .footer-github-link:hover {
-  background: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--shadow-color);
+  box-shadow:
+    0 6px 24px rgba(192, 57, 43, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .github-icon {
@@ -553,8 +806,19 @@ body {
 
 .footer-text {
   margin: 0;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-family: 'KaiTi', 'STKaiti', serif;
+  letter-spacing: 0.2em;
+  position: relative;
+}
+
+.footer-text::before,
+.footer-text::after {
+  content: '◆';
+  color: var(--gold);
+  margin: 0 0.75rem;
+  opacity: 0.6;
 }
 
 .intro-grid {
@@ -620,7 +884,7 @@ body {
   color: var(--text-secondary) !important;
 }
 
-/* ========== 硬币选择器 ========== */
+/* ========== 硬币选择器 - 古铜钱风格 ========== */
 .coins-selector-container {
   display: flex;
   justify-content: center;
@@ -636,27 +900,52 @@ body {
   gap: 0.5rem;
   padding: 1rem;
   background: white;
-  border: 3px solid var(--border-color);
-  border-radius: 16px;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s;
-  min-width: 100px;
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+.coin-selector::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.3;
 }
 
 .coin-selector:hover {
-  border-color: var(--primary-light);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--shadow-color);
+  border-color: var(--vermilion);
+  transform: translateY(-4px);
+  box-shadow:
+    0 8px 24px var(--shadow-color),
+    0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 .coin-selector.head {
-  border-color: var(--coin-gold);
-  background: linear-gradient(135deg, #FFF8DC 0%, #FFFACD 100%);
+  background: linear-gradient(135deg,
+    #FFF8DC 0%,
+    #FFD700 50%,
+    #DAA520 100%
+  );
+  border-color: var(--gold);
 }
 
 .coin-selector.tail {
-  border-color: var(--coin-silver);
-  background: linear-gradient(135deg, #F5F5F5 0%, #E8E8E8 100%);
+  background: linear-gradient(135deg,
+    #F5F5F5 0%,
+    #C0C0C0 50%,
+    #A9A9A9 100%
+  );
+  border-color: var(--ink-black);
 }
 
 .coin-display {
@@ -668,24 +957,36 @@ body {
   justify-content: center;
   font-size: 1.75rem;
   font-weight: 700;
-  box-shadow: 
-    inset 0 0 10px rgba(0, 0, 0, 0.1),
-    0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    inset 0 0 15px rgba(0, 0, 0, 0.2),
+    0 2px 6px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .coin-selector.head .coin-display {
-  background: linear-gradient(135deg, #FFD700 0%, #DAA520 50%, #B8860B 100%);
-  color: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(135deg,
+    #FFD700 0%,
+    #DAA520 50%,
+    #B8860B 100%
+  );
+  color: var(--ink-black);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 .coin-selector.tail .coin-display {
-  background: linear-gradient(135deg, #C0C0C0 0%, #A9A9A9 50%, #808080 100%);
-  color: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(135deg,
+    #DCDCDC 0%,
+    #C0C0C0 50%,
+    #A9A9A9 100%
+  );
+  color: var(--ink-black);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 .coin-selector:not(.head):not(.tail) .coin-display {
-  background: #f0f0f0;
-  border: 2px dashed #ccc;
+  background: var(--bg-color);
+  border: 2px dashed var(--gold);
 }
 
 .coin-placeholder {
@@ -803,43 +1104,70 @@ body {
   font-size: 0.8rem;
 }
 
-/* ========== 卦象展示 ========== */
+/* ========== 卦象展示 - 传统卦画 ========== */
 .gua-comparison {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
   flex-wrap: wrap;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
 }
 
 .gua-display {
   text-align: center;
-  padding: 1.5rem;
+  padding: 2rem;
   background: white;
   border-radius: 12px;
-  border: 2px solid var(--border-color);
-  min-width: 140px;
+  border: 3px solid var(--gold);
+  min-width: 160px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.2);
+}
+
+.gua-display::before {
+  content: '☯';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  opacity: 0.2;
+  color: var(--ink-black);
 }
 
 .gua-title {
   font-size: 0.875rem;
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
+  font-family: 'KaiTi', 'STKaiti', serif;
 }
 
 .gua-name {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
+  color: var(--ink-black);
+  margin-bottom: 1.5rem;
+  font-family: 'KaiTi', 'STKaiti', serif;
+  position: relative;
+}
+
+.gua-name::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
 }
 
 .yao-lines {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
   align-items: center;
 }
 
@@ -857,35 +1185,49 @@ body {
 }
 
 .yao-line.yang .yao-segment.full {
-  width: 80px;
-  height: 10px;
-  background: var(--yang-color);
-  border-radius: 5px;
+  width: 100px;
+  height: 12px;
+  background: var(--ink-black);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .yao-line.yin .yao-segment {
-  width: 36px;
-  height: 10px;
-  background: var(--yin-color);
-  border-radius: 5px;
+  width: 44px;
+  height: 12px;
+  background: var(--ink-black);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .yao-line.yin .yao-gap {
-  width: 8px;
+  width: 12px;
 }
 
 .yao-line.changing .yao-segment {
-  background: var(--changing-color);
-  box-shadow: 0 0 8px rgba(220, 20, 60, 0.4);
+  background: var(--vermilion);
+  box-shadow: 0 0 12px rgba(192, 57, 43, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .changing-indicator {
-  font-size: 0.7rem;
-  color: var(--changing-color);
+  font-size: 0.8rem;
+  color: var(--vermilion);
   font-weight: 700;
-  padding: 2px 6px;
-  background: rgba(220, 20, 60, 0.1);
-  border-radius: 4px;
+  padding: 4px 8px;
+  background: rgba(192, 57, 43, 0.1);
+  border-radius: 6px;
+  border: 1px solid var(--vermilion);
+  font-family: 'KaiTi', 'STKaiti', serif;
 }
 
 .gua-arrow {
@@ -1093,20 +1435,28 @@ body {
   animation: fadeIn 0.5s ease-out;
 }
 
-/* 滚动条样式 */
+/* 滚动条样式 - 传统风格 */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--bg-color);
+  border-left: 1px solid var(--gold);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 4px;
+  background: linear-gradient(180deg,
+    var(--gold) 0%,
+    var(--vermilion) 100%
+  );
+  border-radius: 5px;
+  border: 1px solid var(--gold);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-color);
+  background: linear-gradient(180deg,
+    var(--vermilion) 0%,
+    var(--primary-dark) 100%
+  );
 }
