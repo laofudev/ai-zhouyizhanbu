@@ -713,7 +713,7 @@ function App() {
           <div className="footer-section">
             <h4>关注公众号</h4>
             <div className="footer-qrcode">
-              <img src="/gzh.png" alt="公众号二维码" />
+              <img src="/gzh.jpg" alt="公众号二维码" />
               <p>资源老夫</p>
             </div>
           </div>
