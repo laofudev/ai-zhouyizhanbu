@@ -86,8 +86,8 @@
 
 1. **克隆项目**
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/laofudev/ai-zhouyizhanbu.git
+cd ai-zhouyizhanbu
 ```
 
 2. **安装依赖**
