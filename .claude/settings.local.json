@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(mkdir -p public)",
-      "Bash(mv gzh.png public/gzh.png)"
+      "Bash(mv gzh.png public/gzh.png)",
+      "Bash(ssh-add -l)",
+      "Bash(ssh -T git@github.com)",
+      "Bash(GIT_SSH_COMMAND=\"ssh -i ~/.ssh/id_laofudev_github -o IdentitiesOnly=yes\" git push -u origin main)"
     ]
   }
 }

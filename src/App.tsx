@@ -1,14 +1,19 @@
 import { useState } from 'react';
-import { 
-  Coins, 
-  Sparkles, 
-  BookOpen, 
-  RotateCcw, 
+import {
+  Coins,
+  Sparkles,
+  BookOpen,
+  RotateCcw,
   Loader2,
   ChevronDown,
   ChevronUp,
   Scroll,
-  Check
+  Check,
+  Github,
+  Info,
+  X,
+  Heart,
+  Mail
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -161,6 +166,7 @@ function App() {
   const [analysis, setAnalysis] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [showAllYaos, setShowAllYaos] = useState(false);
+  const [showGuide, setShowGuide] = useState(false);
 
   // 更新硬币状态
   const updateCoin = (index: number, value: CoinResult | null) => {
@@ -352,7 +358,7 @@ function App() {
               </Card>
 
               <div className="intro-section">
-                <h3 className="intro-title">占卜说明</h3>
+                <h3 className="intro-title">📜 占卜流程</h3>
                 <div className="intro-grid">
                   <div className="intro-item">
                     <div className="intro-number">1</div>
@@ -371,6 +377,41 @@ function App() {
                     <p>重复六次成卦</p>
                   </div>
                 </div>
+              </div>
+
+              <div className="intro-section why-manual">
+                <h3 className="intro-title">💎 为什么需要手动抛硬币？</h3>
+                <div className="why-manual-content">
+                  <div className="why-item">
+                    <span className="why-icon">🙏</span>
+                    <div className="why-text">
+                      <strong>心诚则灵</strong>
+                      <p>易经占卜的核心在于占卜者的诚心专注。手动抛硬币的过程，让你有足够的时间集中意念，冥想问题，这与内心建立连接的过程是自动化无法替代的。</p>
+                    </div>
+                  </div>
+                  <div className="why-item">
+                    <span className="why-icon">☯️</span>
+                    <div className="why-text">
+                      <strong>天人合一</strong>
+                      <p>传统六爻法认为，占卜是连接天、地、人的过程。你亲手抛掷硬币的那一刻，意念与行动合一，才能真正体现"感而遂通"的易经哲学。</p>
+                    </div>
+                  </div>
+                  <div className="why-item">
+                    <span className="why-icon">🎯</span>
+                    <div className="why-text">
+                      <strong>更准确的卦象</strong>
+                      <p>古人的智慧告诉我们，占卜的准确性不仅在于方法，更在于心法。手动抛币让你在每次抛掷时都保持专注，这种精神状态直接影响卦象的呈现。</p>
+                    </div>
+                  </div>
+                </div>
+                <Button
+                  onClick={() => setShowGuide(true)}
+                  variant="outline"
+                  className="guide-btn"
+                >
+                  <Info className="btn-icon" />
+                  查看详细使用指南
+                </Button>
               </div>
             </motion.div>
           )}
@@ -642,8 +683,162 @@ function App() {
 
       {/* 页脚 */}
       <footer className="app-footer">
-        <p>易经占卜 · 传承千年智慧</p>
+        <div className="footer-content">
+          <div className="footer-section">
+            <h4>开源项目</h4>
+            <a
+              href="https://github.com/laofudev/ai-zhouyizhanbu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link"
+            >
+              <Github className="footer-icon" />
+              GitHub 仓库
+            </a>
+            <p className="footer-note">使用 React + TypeScript + AI 构建</p>
+          </div>
+
+          <div className="footer-section">
+            <h4>联系作者</h4>
+            <a href="mailto:laofudev@foxmail.com" className="footer-link">
+              <Mail className="footer-icon" />
+              laofudev@foxmail.com
+            </a>
+            <div className="footer-brand">
+              <p>只工作不上班 | 95后一人公司</p>
+              <p>写代码做产品，以定投滚雪球</p>
+            </div>
+          </div>
+
+          <div className="footer-section">
+            <h4>关注公众号</h4>
+            <div className="footer-qrcode">
+              <img src="/gzh.png" alt="公众号二维码" />
+              <p>资源老夫</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <p>
+            Made with <Heart className="heart-icon" /> by 资源老夫
+          </p>
+          <p className="copyright">© 2025 易经占卜 · 传承千年智慧</p>
+        </div>
       </footer>
+
+      {/* 使用指南弹窗 */}
+      <AnimatePresence>
+        {showGuide && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="guide-overlay"
+            onClick={() => setShowGuide(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="guide-modal"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="guide-header">
+                <h2>📖 易经占卜使用指南</h2>
+                <button
+                  onClick={() => setShowGuide(false)}
+                  className="guide-close"
+                >
+                  <X />
+                </button>
+              </div>
+
+              <div className="guide-content">
+                <section className="guide-section">
+                  <h3>🎯 什么是六爻占卜？</h3>
+                  <p>六爻占卜是《易经》中最经典的占卜方法之一，通过抛掷三枚硬币六次，得到六个爻位，形成完整的卦象。每个爻位可能是阳爻（—）或阴爻（- -），还可能出现变爻（老阴、老阳）。</p>
+                </section>
+
+                <section className="guide-section">
+                  <h3>🪙 如何抛硬币？</h3>
+                  <div className="guide-steps">
+                    <div className="guide-step">
+                      <span className="step-number">1</span>
+                      <div className="step-content">
+                        <strong>准备三枚相同的硬币</strong>
+                        <p>最好使用同一面值的硬币，确保重量和大小一致</p>
+                      </div>
+                    </div>
+                    <div className="guide-step">
+                      <span className="step-number">2</span>
+                      <div className="step-content">
+                        <strong>诚心默念问题</strong>
+                        <p>在抛硬币前，闭上眼睛，诚心默念你要占卜的问题，集中意念</p>
+                      </div>
+                    </div>
+                    <div className="guide-step">
+                      <span className="step-number">3</span>
+                      <div className="step-content">
+                        <strong>抛掷三枚硬币</strong>
+                        <p>将三枚硬币同时抛起，观察落地后的正反面</p>
+                      </div>
+                    </div>
+                    <div className="guide-step">
+                      <span className="step-number">4</span>
+                      <div className="step-content">
+                        <strong>记录结果</strong>
+                        <p>正面（有字的一面）= 3点，反面（有花纹的一面）= 2点</p>
+                      </div>
+                    </div>
+                    <div className="guide-step">
+                      <span className="step-number">5</span>
+                      <div className="step-content">
+                        <strong>重复六次</strong>
+                        <p>从下到上依次完成六爻（初爻、二爻、三爻、四爻、五爻、上爻）</p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section className="guide-section">
+                  <h3>📊 如何解读结果？</h3>
+                  <div className="guide-result">
+                    <div className="result-type">
+                      <strong>6点（老阴）</strong>
+                      <p>阴爻，且为变爻，会变成阳爻</p>
+                    </div>
+                    <div className="result-type">
+                      <strong>7点（少阳）</strong>
+                      <p>阳爻，不变</p>
+                    </div>
+                    <div className="result-type">
+                      <strong>8点（少阴）</strong>
+                      <p>阴爻，不变</p>
+                    </div>
+                    <div className="result-type">
+                      <strong>9点（老阳）</strong>
+                      <p>阳爻，且为变爻，会变成阴爻</p>
+                    </div>
+                  </div>
+                </section>
+
+                <section className="guide-section">
+                  <h3>⚠️ 占卜注意事项</h3>
+                  <ul className="guide-tips">
+                    <li>✅ 占卜前请平心静气，诚心默念问题</li>
+                    <li>✅ 问题要具体明确，不宜过于模糊</li>
+                    <li>✅ 每次占卜只问一个问题</li>
+                    <li>✅ 占卜结果仅供参考，最终决定权在自己</li>
+                    <li>❌ 同一问题不宜反复占卜</li>
+                    <li>❌ 不要在情绪激动时占卜</li>
+                  </ul>
+                </section>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
